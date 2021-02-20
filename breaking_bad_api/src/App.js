@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/ui/Header'
 // axios returns a promise
 import axios from 'axios'
+import CharacterGrid from './components/characters/CharacterGrid'
 
 const App = () => {
 
@@ -12,7 +13,7 @@ const App = () => {
   useEffect(() => {
     const fetchItems = async () => {
       const result = await axios(`https://www.breakingbadapi.com/api/characters`)
-      
+
       console.log(result.data)
       setItems(result.data)
       setIsLoading(false)
@@ -23,6 +24,7 @@ const App = () => {
   return (
     <div className="container">
       <Header />
+      <CharacterGrid isLoading={isLoading} items={items} />
     </div>
   );
 }
